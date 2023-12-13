@@ -6,7 +6,7 @@ const Home = () => {
   return (
     <div>
         
-        <MainCarousel />
+        {/* <MainCarousel /> */}
 
         <div className="px-4 lg:px-5">
 
