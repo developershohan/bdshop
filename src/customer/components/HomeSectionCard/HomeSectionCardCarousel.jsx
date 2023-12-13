@@ -29,9 +29,6 @@ export const HomeSectionCardCarousel = () => {
                     items={items}
                     responsive={responsive}
                     disableButtonsControls
-
-
-
                 />
             </div>
         </div>
