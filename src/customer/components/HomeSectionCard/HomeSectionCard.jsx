@@ -1,10 +1,10 @@
-import React from 'react'
+
 
 const HomeSectionCard = ({image, name, price}) => {
   return (
     <>
-    <div className=' overflow-hidden w-[15rem] flex flex-col shadow-lg rounded-lg my-5'>
-            <div className="h-[14rem] p-3 ">
+    <div className='  w-[15rem] flex flex-col items-center shadow-lg rounded-lg my-5'>
+            <div className="h-[14rem] w-[15rem] p-3 ">
                 <img src={image} alt="" className=' rounded-lg object-cover w-full h-full object-top' />
             </div>
             <div className=" p-4">

@@ -1,5 +1,3 @@
-
-import HomeSectionCard from '../../components/HomeSectionCard/HomeSectionCard'
 import { HomeSectionCardCarousel } from '../../components/HomeSectionCard/HomeSectionCardCarousel'
 import { MainCarousel } from '../../components/MainCarousel/MainCarousel'
 
@@ -8,7 +6,12 @@ const Home = () => {
     <div>
         
         <MainCarousel/>
+
+        <div className="  px-4 lg:px-5">
+
         <HomeSectionCardCarousel/>
+
+        </div>
     </div>
   )
 }
