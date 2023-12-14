@@ -1,9 +1,9 @@
-
+import './ProductCard.scss'
 
 const ProductCard = ({imageUrl,price,discountPersent,discountedPrice,brand,title}) => {
   return (
     <div>
-      <div className="productCard overflow-hidden rounded-md w-[15rem] hover:-translate-y-1 hover:shadow-lg cursor-pointer shadow-md">
+      <div className="productCard-box overflow-hidden rounded-md w-[15rem] hover:-translate-y-1 hover:shadow-lg cursor-pointer shadow-md">
         <div className="product-img h-[15rem] overflow-hidden">
           <img className="object-cover h-full w-full object-top " src={imageUrl} alt="" />
         </div>
