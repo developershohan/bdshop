@@ -1,4 +1,4 @@
-import React from 'react'
+
 import Layout from '../component/Layout/Layout'
 import Home from '../customer/pages/Home/Home'
 import Product from '../customer/pages/Product/Product'

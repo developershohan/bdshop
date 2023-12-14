@@ -1,0 +1,11 @@
+.productCard{
+    transition: all 0.3s ease-in-out;
+
+}
+.productCard:hover img{
+    transform: scale(1.05);
+}
+.productCard img{
+    transition: all 0.3s ease-in-out;
+
+}
