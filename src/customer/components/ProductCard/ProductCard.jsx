@@ -1,4 +1,4 @@
-import './productCard.scss'
+
 
 const ProductCard = ({imageUrl,price,discountPersent,discountedPrice,brand,title}) => {
   return (
