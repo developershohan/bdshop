@@ -9,9 +9,14 @@ import { useState } from 'react';
 export const HomeSectionCardCarousel = ({data, sectionName}) => {
 
     const responsive = {
-        0: { items: 2 },
+        0: { items: 1 },
         720: { items: 3 },
-        1024: { items: 5 },
+        1024: { items: 4 },
+        1280: { items: 5 },
+        1440: { items: 6 },
+        1600: { items: 7 },
+        1920: { items: 8 },
+        2048: { items: 9 },
     };
 
     const [activeIndex, setActiveIndex] = useState(0)

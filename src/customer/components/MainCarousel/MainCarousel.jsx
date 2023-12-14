@@ -2,6 +2,7 @@
 import AliceCarousel from 'react-alice-carousel';
 import 'react-alice-carousel/lib/alice-carousel.css';
 import { MainCarouselData } from './MainCarouselData';
+import "./MainCarousel.scss"
 
 
 export const MainCarousel = () => {
@@ -10,7 +11,8 @@ export const MainCarousel = () => {
 
     return (
 
-        <AliceCarousel
+<div className=" -z-20 main-carousel ">
+<AliceCarousel
             mouseTracking
             items={items}
             autoPlay
@@ -21,6 +23,7 @@ export const MainCarousel = () => {
 
 
         />
+</div>
     )
 
 };
