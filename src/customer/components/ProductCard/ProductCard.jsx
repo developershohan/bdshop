@@ -8,8 +8,8 @@ const ProductCard = ({imageUrl,price,discountPersent,discountedPrice,brand,title
           <img className="object-cover h-full w-full object-top " src={imageUrl} alt="" />
         </div>
         <div className="productCard-content p-2 flex flex-col gap-1">
-          <p className=" capitalize font-semibold text-sm" >{brand}</p>
-          <h2 className="text-xl capitalize font-semibold">{title}</h2>
+          <p className=" uppercase font-semibold text-xs" >{brand}</p>
+          <h2 className="text-lg capitalize font-semibold">{title}</h2>
           <div className="productCard-price flex gap-1">
             <p className=" font-semibold">{`$${discountedPrice}`}</p>
             <p className=" opacity-50 line-through ">{`$${price}`}</p>
