@@ -1,7 +1,7 @@
 
+import { RouterProvider } from 'react-router-dom'
 import './App.css'
-import Navbar from './customer/components/Navbar/Navbar'
-import Home from './customer/pages/Home/Home'
+import router from './router/Router'
 
 
 function App() {
@@ -9,9 +9,7 @@ function App() {
 
   return (
     <>
-      <Navbar/>
-      <Home/>
-   
+      <RouterProvider router={router} />
     </>
   )
 }
