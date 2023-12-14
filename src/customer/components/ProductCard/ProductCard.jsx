@@ -11,7 +11,7 @@ const ProductCard = ({imageUrl,price,discountPersent,discountedPrice,brand,title
           <p className=" capitalize font-semibold text-sm" >{brand}</p>
           <h2 className="text-xl capitalize font-semibold">{title}</h2>
           <div className="productCard-price flex gap-1">
-            <p>{`$${discountedPrice}`}</p>
+            <p className=" font-semibold">{`$${discountedPrice}`}</p>
             <p className=" opacity-50 line-through ">{`$${price}`}</p>
             <p className=" text-green-900 font-semibold">{`${discountPersent}%`}</p>
           </div>
