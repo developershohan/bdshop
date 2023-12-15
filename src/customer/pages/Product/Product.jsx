@@ -11,7 +11,7 @@ import { ChevronDownIcon, FunnelIcon, MinusIcon, PlusIcon, Squares2X2Icon } from
 import ProductCard from '../../components/ProductCard/ProductCard'
 import { mens_kurta } from '../../../faker/mens/Mens'
 import { filters, singleFilters } from '../../../faker/FilterData/FilterData'
-import { useLocation,useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 
 const sortOptions = [
@@ -39,30 +39,41 @@ export default function Product() {
 
   const location = useLocation()
   const navigate = useNavigate()
- 
 
+//CONFUTIONS
 
-  const handlefilter =(value, sectionId)=>{
+  const handlefilter = (value, sectionId) => {
 
     const searchParams = new URLSearchParams(location.search)
+   
 
-    let filterValue= searchParams.getAll(sectionId)
+    let filterValue = searchParams.getAll(sectionId)
 
-    if (filterValue.length>0 && filterValue[0].split(",").includes(value)) {
-      filterValue = filterValue[0].split(",").filter((item)=> item !== value)
+    if (filterValue.length > 0 && filterValue[0].split(",").includes(value)) {
+      filterValue = filterValue[0].split(",").filter((item) => item !== value)
 
-      if (filterValue.length === 0 ) {
+      if (filterValue.length === 0) {
         searchParams.delete(sectionId)
       }
     }
-    else{
+    else {
       filterValue.push(value)
     }
-if (filterValue.length > 0) {
-  searchParams.set(sectionId, filterValue.join(","))
-}
-const query = searchParams.toString()
-navigate({search:`?${query}`})
+    if (filterValue.length > 0) {
+      searchParams.set(sectionId, filterValue.join(","))
+    }
+
+    const query = searchParams.toString()
+    navigate({ search: `?${query}` })
+
+  }
+
+  const handleRadioFilter =(e, sectionId) => {
+    const searchParams = new URLSearchParams(location.search)
+
+    searchParams.set(sectionId,e.target.value)
+    const query = searchParams.toString()
+    navigate({ search: `?${query}` })
 
   }
 
@@ -264,7 +275,7 @@ navigate({search:`?${query}`})
                               <div key={option.value} className="flex items-center">
                                 <input
 
-                                onChange={()=>handlefilter(option.value, section.id)}
+                                  onChange={() => handlefilter(option.value, section.id)}
                                   id={`filter-${section.id}-${optionIdx}`}
                                   name={`${section.id}[]`}
                                   defaultValue={option.value}
@@ -294,7 +305,7 @@ navigate({search:`?${query}`})
                         <h3 className="-my-3 flow-root">
                           <Disclosure.Button className="flex w-full items-center justify-between bg-white py-3 text-sm text-gray-400 hover:text-gray-500">
 
-                            <FormLabel sx={{color:'black'}}  id="demo-radio-buttons-group-label">{section.name}</FormLabel>
+                            <FormLabel sx={{ color: 'black' }} id="demo-radio-buttons-group-label">{section.name}</FormLabel>
                             <span className="ml-6 flex items-center">
                               {open ? (
                                 <MinusIcon className="h-5 w-5" aria-hidden="true" />
@@ -314,7 +325,7 @@ navigate({search:`?${query}`})
                               >
                                 {section.options.map((option, optionIdx) => (
 
-                                  <FormControlLabel key={optionIdx} value={option.value} control={<Radio />} label={option.label} />
+                                  <FormControlLabel onChange={(e)=>handleRadioFilter(e,section.id)} key={optionIdx} value={option.value} control={<Radio />} label={option.label} />
 
                                 ))}
                               </RadioGroup>
