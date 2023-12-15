@@ -11,6 +11,7 @@ import { ChevronDownIcon, FunnelIcon, MinusIcon, PlusIcon, Squares2X2Icon } from
 import ProductCard from '../../components/ProductCard/ProductCard'
 import { mens_kurta } from '../../../faker/mens/Mens'
 import { filters, singleFilters } from '../../../faker/FilterData/FilterData'
+import { useLocation,useNavigate } from 'react-router-dom';
 
 
 const sortOptions = [
@@ -35,6 +36,35 @@ function classNames(...classes) {
 
 export default function Product() {
   const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false)
+
+  const location = useLocation()
+  const navigate = useNavigate()
+ 
+
+
+  const handlefilter =(value, sectionId)=>{
+
+    const searchParams = new URLSearchParams(location.search)
+
+    let filterValue= searchParams.getAll(sectionId)
+
+    if (filterValue.length>0 && filterValue[0].split(",").includes(value)) {
+      filterValue = filterValue[0].split(",").filter((item)=> item !== value)
+
+      if (filterValue.length === 0 ) {
+        searchParams.delete(sectionId)
+      }
+    }
+    else{
+      filterValue.push(value)
+    }
+if (filterValue.length > 0) {
+  searchParams.set(sectionId, filterValue.join(","))
+}
+const query = searchParams.toString()
+navigate({search:`?${query}`})
+
+  }
 
   return (
     <div className="bg-white">
@@ -233,6 +263,8 @@ export default function Product() {
                             {section.options.map((option, optionIdx) => (
                               <div key={option.value} className="flex items-center">
                                 <input
+
+                                onChange={()=>handlefilter(option.value, section.id)}
                                   id={`filter-${section.id}-${optionIdx}`}
                                   name={`${section.id}[]`}
                                   defaultValue={option.value}
