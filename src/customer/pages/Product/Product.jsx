@@ -11,7 +11,7 @@ import { ChevronDownIcon, FunnelIcon, MinusIcon, PlusIcon, Squares2X2Icon } from
 import ProductCard from '../../components/ProductCard/ProductCard'
 import { mens_kurta } from '../../../faker/mens/Mens'
 import { filters, singleFilters } from '../../../faker/FilterData/FilterData'
-import FormHelperText from '@mui/material/FormHelperText'
+
 
 const sortOptions = [
   { name: 'Most Popular', href: '#', current: true },
@@ -258,11 +258,11 @@ export default function Product() {
                 {singleFilters.map((section) => (
                   <Disclosure as="div" key={section.id} className="border-b border-gray-200 py-6">
                     {({ open }) => (
-                    <>
+                      <>
                         <h3 className="-my-3 flow-root">
                           <Disclosure.Button className="flex w-full items-center justify-between bg-white py-3 text-sm text-gray-400 hover:text-gray-500">
-                         
-                            <FormLabel className="font-medium text-gray-900" id="demo-radio-buttons-group-label">{section.name}</FormLabel>
+
+                            <FormLabel sx={{color:'black'}}  id="demo-radio-buttons-group-label">{section.name}</FormLabel>
                             <span className="ml-6 flex items-center">
                               {open ? (
                                 <MinusIcon className="h-5 w-5" aria-hidden="true" />
@@ -274,27 +274,22 @@ export default function Product() {
                         </h3>
                         <Disclosure.Panel className="pt-6">
                           <div className="space-y-4">
-                          <FormControl >
-                          <RadioGroup 
-                                  aria-labelledby="demo-radio-buttons-group-label"
-                                  defaultValue="female"
-                                  name="radio-buttons-group"
-                                >
-                            {section.options.map((option, optionIdx) => (
-
-                              
-                                
+                            <FormControl >
+                              <RadioGroup
+                                aria-labelledby="demo-radio-buttons-group-label"
+                                defaultValue="female"
+                                name="radio-buttons-group"
+                              >
+                                {section.options.map((option, optionIdx) => (
 
                                   <FormControlLabel key={optionIdx} value={option.value} control={<Radio />} label={option.label} />
-                                
-                              
 
-                            ))}
-                            </RadioGroup>
+                                ))}
+                              </RadioGroup>
                             </FormControl>
                           </div>
                         </Disclosure.Panel>
-                        </>
+                      </>
                     )}
                   </Disclosure>
                 ))}
