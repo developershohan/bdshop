@@ -6,15 +6,10 @@ import StepLabel from '@mui/material/StepLabel';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 
-const steps = ['Select campaign settings', 'Create an ad group', 'Create an ad'];
+const steps = ['Login', 'Add Delivery Addess', 'Order Summery', "payment"];
 
 export default function CheckOut() {
     const [activeStep, setActiveStep] = React.useState(0);
-
-
-    const isStepOptional = (step) => {
-        return step === 1;
-    };
 
     const handleNext = () => {
 
@@ -23,20 +18,15 @@ export default function CheckOut() {
     };
 
     return (
-<div className=" px-10 lg:px-20">
+<div className=" py-10 px-10 lg:px-20">
 <Box sx={{ width: '100%' }}>
             <Stepper activeStep={activeStep}>
                 {steps.map((label, index) => {
                     const stepProps = {};
                     const labelProps = {};
-                    if (isStepOptional(index)) {
-                        labelProps.optional = (
-                            <Typography variant="caption">Optional</Typography>
-                        );
-                    }
 
                     return (
-                        <Step key={label} {...stepProps}>
+                        <Step key={index} {...stepProps}>
                             <StepLabel {...labelProps}>{label}</StepLabel>
                         </Step>
                     );
