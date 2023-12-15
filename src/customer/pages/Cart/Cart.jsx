@@ -1,9 +1,13 @@
+import { useNavigate } from "react-router-dom"
 import CartItem from "../../components/CartItem/CartItem"
 import Button from '@mui/material/Button'
 
 
 
+
 const Cart = () => {
+
+  const navigate = useNavigate()
   return (
     <div className=" lg:grid grid-cols-3 lg:px-16">
       <div className=" col-span-2">
@@ -34,7 +38,7 @@ const Cart = () => {
               <span> $123</span>
             </div>
           </div>
-          <Button className=" w-full" variant="contained" sx={{bgcolor: "#9155fd", my:"1rem", py:".5 rem"}}>
+          <Button onClick={()=> navigate("/checkout")} className=" w-full" variant="contained" sx={{bgcolor: "#9155fd", my:"1rem", py:".5 rem"}}>
             Check out
           </Button>
         </div>
