@@ -116,10 +116,10 @@ export default function SingleProduct() {
                         </li>
                     </ol>
                 </nav>
-                <section className=' grid grid-cols-1 lg:grid-cols-2'>
+                <section className=' grid grid-cols-1 lg:grid-cols-2 py-5'>
                     {/* Image gallery */}
-                    <div className=" flex flex-col ">
-                        <div className="aspect-h-4 aspect-w-3 hidden overflow-hidden rounded-lg lg:block">
+                    <div className=" flex flex-col items-center">
+                        <div className="overflow-hidden rounded-lg max-w-[30rem] max-h-[35rem]">
                             <img
                                 src={product.images[0].src}
                                 alt={product.images[0].alt}
@@ -127,13 +127,13 @@ export default function SingleProduct() {
                             />
                         </div>
                         <div className="py-3 flex flex-wrap space-x-4 justify-center" >
-                        {product.images.map((item, index) => <div key={index} className="aspect-h-2 aspect-w-3 overflow-hidden rounded-lg w-[5rem] h-[5rem]">
-                                
-                                    <img 
-                                        src={item.src}
-                                        alt={item.alt}
-                                        className="h-full w-full object-cover object-center"
-                                    />
+                            {product.images.map((item, index) => <div key={index} className="aspect-h-2 aspect-w-3 overflow-hidden rounded-lg w-[5rem] h-[5rem]">
+
+                                <img
+                                    src={item.src}
+                                    alt={item.alt}
+                                    className="h-full w-full object-cover object-center"
+                                />
                             </div>)}
 
                         </div>
@@ -141,7 +141,7 @@ export default function SingleProduct() {
                     </div>
 
                     {/* Product info */}
-                    <div className="mx-auto max-w-2xl px-4 pb-16 pt-10 sm:px-6 lg:grid lg:max-w-7xl lg:grid-cols-3 lg:grid-rows-[auto,auto,1fr] lg:gap-x-8 lg:px-8 lg:pb-24 lg:pt-16">
+                    <div className="px-4 pb-16 sm:px-6 lg:px-8 lg:pb-24">
                         <div className="lg:col-span-2 lg:border-r lg:border-gray-200 lg:pr-8">
                             <h1 className="text-2xl font-bold tracking-tight text-gray-900 sm:text-3xl">{product.name}</h1>
                         </div>
@@ -277,7 +277,7 @@ export default function SingleProduct() {
                                     type="submit"
                                     className="mt-10 flex w-full items-center justify-center rounded-md border border-transparent bg-indigo-600 px-8 py-3 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
                                 >
-                                    Add to bag
+                                    Add to Cart
                                 </button>
                             </form>
                         </div>
