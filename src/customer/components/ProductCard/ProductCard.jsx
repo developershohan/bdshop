@@ -1,10 +1,12 @@
 import './ProductCard.scss'
+import { useNavigate  } from 'react-router-dom'
 
 const ProductCard = ({imageUrl,price,discountPersent,discountedPrice,brand,title}) => {
+  const navigate= useNavigate()
   return (
     <div>
-      <div className="productCard-box overflow-hidden rounded-md w-[15rem] hover:-translate-y-1 hover:shadow-lg cursor-pointer shadow-md">
-        <div className="product-img h-[15rem] overflow-hidden">
+      <div  className="productCard-box overflow-hidden rounded-md w-[15rem] hover:-translate-y-1 hover:shadow-lg cursor-pointer shadow-md">
+        <div onClick={()=> navigate(`/product/${5}`)} className="product-img h-[15rem] overflow-hidden">
           <img className="object-cover h-full w-full object-top " src={imageUrl} alt="" />
         </div>
         <div className="productCard-content p-2 flex flex-col gap-1">

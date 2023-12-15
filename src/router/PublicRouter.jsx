@@ -18,7 +18,7 @@ const PublicRouter = [
                 element: <Product/>
             },
             {
-                path: "/single-product",
+                path: "/product/:id",
                 element: <SingleProduct/>
             },
             {

@@ -126,8 +126,7 @@ const navigation = {
     },
   ],
   pages: [
-    { name: 'Product', href:"product" },
-    { name: 'SingleProduct', href:"single-product" },
+    { name: 'Product', href:"product" }
   ],
 }
 
