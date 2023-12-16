@@ -40,12 +40,12 @@ export default function Product() {
   const location = useLocation()
   const navigate = useNavigate()
 
-//CONFUTIONS
+  //CONFUTIONS
 
   const handlefilter = (value, sectionId) => {
 
     const searchParams = new URLSearchParams(location.search)
-   
+
 
     let filterValue = searchParams.getAll(sectionId)
 
@@ -68,10 +68,10 @@ export default function Product() {
 
   }
 
-  const handleRadioFilter =(e, sectionId) => {
+  const handleRadioFilter = (e, sectionId) => {
     const searchParams = new URLSearchParams(location.search)
 
-    searchParams.set(sectionId,e.target.value)
+    searchParams.set(sectionId, e.target.value)
     const query = searchParams.toString()
     navigate({ search: `?${query}` })
 
@@ -325,7 +325,7 @@ export default function Product() {
                               >
                                 {section.options.map((option, optionIdx) => (
 
-                                  <FormControlLabel onChange={(e)=>handleRadioFilter(e,section.id)} key={optionIdx} value={option.value} control={<Radio />} label={option.label} />
+                                  <FormControlLabel onChange={(e) => handleRadioFilter(e, section.id)} key={optionIdx} value={option.value} control={<Radio />} label={option.label} />
 
                                 ))}
                               </RadioGroup>

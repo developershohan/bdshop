@@ -5,12 +5,20 @@ import Step from '@mui/material/Step';
 import StepLabel from '@mui/material/StepLabel';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
+import { useLocation } from 'react-router-dom';
+import DeliveryAddressForm from '../../components/DeliveryAddressForm/DeliveryAddressForm';
+import OrderSummery from '../../components/OrderSummery/OrderSummery';
 
 const steps = ['Login', 'Add Delivery Addess', 'Order Summery', "payment"];
 
 export default function CheckOut() {
     const [activeStep, setActiveStep] = React.useState(0);
 
+
+    const locaion = useLocation()
+
+    const querySearch = new URLSearchParams(locaion.search)
+    const step = querySearch.get("step")
     const handleNext = () => {
 
         setActiveStep((prevActiveStep) => prevActiveStep + 1);
@@ -18,39 +26,43 @@ export default function CheckOut() {
     };
 
     return (
-<div className=" py-10 px-10 lg:px-20">
-<Box sx={{ width: '100%' }}>
-            <Stepper activeStep={activeStep}>
-                {steps.map((label, index) => {
-                    const stepProps = {};
-                    const labelProps = {};
+        <div className=" py-10 px-10 lg:px-20">
+            <Box sx={{ width: '100%' }}>
+                <Stepper activeStep={step}>
+                    {steps.map((label, index) => {
+                        const stepProps = {};
+                        const labelProps = {};
 
-                    return (
-                        <Step key={index} {...stepProps}>
-                            <StepLabel {...labelProps}>{label}</StepLabel>
-                        </Step>
-                    );
-                })}
-            </Stepper>
-            {activeStep === steps.length ? (
-                <React.Fragment>
-                    <Typography sx={{ mt: 2, mb: 1 }}>
-                        All steps completed - you&apos;re finished
-                    </Typography>
+                        return (
+                            <Step key={index} {...stepProps}>
+                                <StepLabel {...labelProps}>{label}</StepLabel>
+                            </Step>
+                        );
+                    })}
+                </Stepper>
+                {activeStep === steps.length ? (
+                    <React.Fragment>
+                        <Typography sx={{ mt: 2, mb: 1 }}>
+                            All steps completed - you&apos;re finished
+                        </Typography>
 
-                </React.Fragment>
-            ) : (
-                <React.Fragment>
-                    <Typography sx={{ mt: 2, mb: 1 }}>Step {activeStep + 1}</Typography>
-                    <Box sx={{ display: 'flex', flexDirection: 'row', pt: 2 }}>
+                    </React.Fragment>
+                ) : (
+                    <React.Fragment>
 
-                        <Button onClick={handleNext}>
-                            {activeStep === steps.length - 1 ? 'Finish' : 'Next'}
-                        </Button>
-                    </Box>
-                </React.Fragment>
-            )}
-        </Box>
-</div>
+                        <Box sx={{ display: 'flex', flexDirection: 'row', pt: 2 }}>
+
+                            <div className=" my-10">
+                                {step == 2 ? <DeliveryAddressForm /> : <OrderSummery />}
+                            </div>
+
+                            <Button onClick={handleNext}>
+                                {activeStep === steps.length - 1 ? 'Finish' : 'Next'}
+                            </Button>
+                        </Box>
+                    </React.Fragment>
+                )}
+            </Box>
+        </div>
     );
 }
