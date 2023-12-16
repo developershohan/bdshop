@@ -49,17 +49,18 @@ export default function CheckOut() {
                     </React.Fragment>
                 ) : (
                     <React.Fragment>
-
+                        <div className=" my-10">
+                            {step == 2 ? <DeliveryAddressForm /> : <OrderSummery />}
+                        </div>
                         <Box sx={{ display: 'flex', flexDirection: 'row', pt: 2 }}>
 
-                            <div className=" my-10">
-                                {step == 2 ? <DeliveryAddressForm /> : <OrderSummery />}
-                            </div>
 
                             <Button onClick={handleNext}>
                                 {activeStep === steps.length - 1 ? 'Finish' : 'Next'}
                             </Button>
                         </Box>
+
+
                     </React.Fragment>
                 )}
             </Box>
