@@ -1,4 +1,8 @@
-import { Modal,Box,Typography} from "@mui/material"
+import { Modal, Box, Typography } from "@mui/material"
+import RegisterForm from "./RegisterForm";
+
+import { useLocation } from 'react-router-dom';
+import LoginForm from "./LoginForm";
 
 
 const style = {
@@ -6,7 +10,7 @@ const style = {
   top: '50%',
   left: '50%',
   transform: 'translate(-50%, -50%)',
-  width: 400,
+  width: 500,
   bgcolor: 'background.paper',
   border: '2px solid #000',
   boxShadow: 24,
@@ -16,7 +20,9 @@ const style = {
 };
 
 
-const AuthModal = ({handleClose, open}) => {
+const AuthModal = ({ handleClose, open }) => {
+  const location = useLocation()
+
   return (
     <div>
 
@@ -28,12 +34,12 @@ const AuthModal = ({handleClose, open}) => {
         aria-describedby="modal-modal-description"
       >
         <Box sx={style}>
-          <Typography id="modal-modal-title" variant="h6" component="h2">
-            Text in a modal
+          <Typography id="modal-modal-title" sx={{ fontWeight: "bold" }} variant="h6" component="h2" mb={2}>
+            {location.pathname === "/login" ? "Sign In" :
+              "Sign Up"}
           </Typography>
-          <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-            Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
-          </Typography>
+          {location.pathname === "/login" ? <LoginForm /> :
+            <RegisterForm />}
         </Box>
       </Modal>
     </div>

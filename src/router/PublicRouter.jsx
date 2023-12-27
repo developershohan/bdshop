@@ -15,6 +15,14 @@ const PublicRouter = [
                 element: <Home/>
             },
             {
+                path: "/login",
+                element: <Home/>
+            },
+            {
+                path: "/register",
+                element: <Home/>
+            },
+            {
                 path: "/product",
                 element: <Product/>
             },
