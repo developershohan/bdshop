@@ -16,7 +16,7 @@ const style = {
 };
 
 
-const AuthModal = (handleClose, style,open) => {
+const AuthModal = ({handleClose, open}) => {
   return (
     <div>
 

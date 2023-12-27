@@ -127,7 +127,7 @@ const navigation = {
     },
   ],
   pages: [
-    { name: 'Product', href:"product" }
+    { name: 'Product', href: "product" }
   ],
 }
 
@@ -140,12 +140,13 @@ export default function Navbar() {
   const [openAuthModal, setOpenAuthModal] = useState(false)
 
 
-  const handleClose = ( ) =>{
-
+  const handleClose = () => {
+    setOpenAuthModal(false)
   }
-  const openAuthModal = ( ) =>{
-
+  const handleOpen = () => {
+    setOpenAuthModal(true)
   }
+
 
   return (
     <div className="bg-white custom-nav-bar z-50">
@@ -261,8 +262,8 @@ export default function Navbar() {
                 </div>
 
                 <div className="space-y-6 border-t border-gray-200 px-4 py-6">
-                  <div className="flow-root">
-                    <a href="#" className="-m-2 block p-2 font-medium text-gray-900">
+                  <div onClick={handleOpen} className="flow-root">
+                    <a  href="#" className="-m-2 block p-2 font-medium text-gray-900">
                       Sign in
                     </a>
                   </div>
@@ -323,7 +324,7 @@ export default function Navbar() {
               {/* Flyout menus */}
               <Popover.Group className="hidden lg:ml-8 lg:block lg:self-stretch">
                 <div className="flex h-full space-x-8">
-                {navigation.categories.map((category) => (
+                  {navigation.categories.map((category) => (
                     <Popover key={category.name} className="flex">
                       {({ open }) => (
                         <>
@@ -423,7 +424,7 @@ export default function Navbar() {
 
               <div className="ml-auto flex items-center">
                 <div className="hidden lg:flex lg:flex-1 lg:items-center lg:justify-end lg:space-x-6">
-                  <a href="#" className="text-sm font-medium text-gray-700 hover:text-gray-800">
+                  <a onClick={handleOpen} href="#" className="text-sm font-medium text-gray-700 hover:text-gray-800">
                     Sign in
                   </a>
                   <span className="h-6 w-px bg-gray-200" aria-hidden="true" />
@@ -468,7 +469,8 @@ export default function Navbar() {
           </div>
         </nav>
       </header>
-      <AuthModal handleClose= {handleClose} open ={openAuthModal}  />
+      <AuthModal handleClose={handleClose} open={openAuthModal} />
     </div>
   )
 }
+
