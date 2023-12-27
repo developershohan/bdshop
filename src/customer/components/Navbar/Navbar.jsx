@@ -4,6 +4,7 @@ import { Dialog, Popover, Tab, Transition } from '@headlessui/react'
 import { Bars3Icon, MagnifyingGlassIcon, ShoppingBagIcon, XMarkIcon } from '@heroicons/react/24/outline'
 import "./Navbar.scss"
 import { Link } from 'react-router-dom'
+import AuthModal from '../../Auth/AuthModal'
 
 
 
@@ -136,6 +137,15 @@ function classNames(...classes) {
 
 export default function Navbar() {
   const [open, setOpen] = useState(false)
+  const [openAuthModal, setOpenAuthModal] = useState(false)
+
+
+  const handleClose = ( ) =>{
+
+  }
+  const openAuthModal = ( ) =>{
+
+  }
 
   return (
     <div className="bg-white custom-nav-bar z-50">
@@ -458,6 +468,7 @@ export default function Navbar() {
           </div>
         </nav>
       </header>
+      <AuthModal handleClose= {handleClose} open ={openAuthModal}  />
     </div>
   )
 }
